@@ -1,12 +1,15 @@
-const express = require('express');
-const userRoutes = require('./routes/userRoutes');
-const authRoutes = require('./auth/auth');
-const app = express();
+const config = require('./config/config');  // Import config.js
 
-app.use(express.json()); // Middleware to parse JSON bodies
-app.use('/auth', authRoutes); // Authentication-related routes
-app.use('/user', userRoutes); // User-related routes
+// Use ATProtocol settings
+const repoUrl = config.atproto.repo;
+const username = config.atproto.username;
+const password = config.atproto.password;
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
+// Use MongoDB settings
+const mongodbUri = config.mongodb.uri;
+
+// Use session settings
+const sessionSecret = config.session.secret;
+
+// Example of using port for the server
+const port = config.server.port;
